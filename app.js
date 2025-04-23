@@ -11,7 +11,13 @@ const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
-app.use(cors()); // Accepts all origins
+const allowedOrigins = [
+  "https://premiermills.netlify.app", // Netlify frontend
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+})); // Accepts only specified origins
 
 // Parse incoming JSON
 app.use(express.json());
